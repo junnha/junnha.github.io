@@ -2,19 +2,19 @@ header:
   - titles:
       en: &EN PS
       ko: &KO PS
-    url: /archive.html?tag=PS
+    url: /ps.html
   - titles:
       en: &EN Blockchain
       ko: &KO Blockchain
-    url: /archive.html?tag=Blockchain
+    url: /blockchain.html
   - titles:
       en: &EN Data
       ko: &KO Data
-    url: /archive.html?tag=Data
+    url: /data.html
   - titles:
       en: &EN AI
       ko: &KO AI
-    url: /archive.html?tag=AI
+    url: /ai.html
   - titles:
       # @start locale config
       en      : &EN       Archive

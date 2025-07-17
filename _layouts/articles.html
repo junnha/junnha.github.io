@@ -31,7 +31,7 @@ layout: page
 
 {%- assign _type = page.articles.type | default: layout.articles.type -%}
 
-{%- if _articles -%}
+{%- if _articles.size > 0 -%}
 
   <div class="layout--articles">
 
@@ -84,6 +84,9 @@ layout: page
     {%- endif -%}
 
   </div>
+
+{%- else -%}
+  <p>coming soon..</p>
 {%- endif -%}
 
 {{ content }}
