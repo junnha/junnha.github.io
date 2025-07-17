@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-07-17T17:32:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Blog</title><subtitle>blog by Junha Hwang.
+</subtitle><author><name>Junha Hwang</name><email>junha320@gmail.com</email></author><entry><title type="html">Stack</title><link href="http://localhost:4000/2025/07/17/0x05.html" rel="alternate" type="text/html" title="Stack" /><published>2025-07-17T00:00:00+09:00</published><updated>2025-07-17T00:00:00+09:00</updated><id>http://localhost:4000/2025/07/17/0x05</id><content type="html" xml:base="http://localhost:4000/2025/07/17/0x05.html"><![CDATA[<hr />
+
+<h2 id="스택-stack">스택 (Stack)</h2>
+
+<h3 id="스택의-성질">스택의 성질</h3>
+<ul>
+  <li>원소의 추가 O(1)</li>
+  <li>원소의 제거 O(1)</li>
+  <li>제일 상단의 원소 확인이 O(1)</li>
+  <li>제일 상단이 아닌 원소의 확인/변경 불가능</li>
+</ul>
+
+<h3 id="기능과-구현">기능과 구현</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">MX</span> <span class="o">=</span> <span class="mi">1000005</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">dat</span><span class="p">[</span><span class="n">MX</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">push</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+    <span class="n">dat</span><span class="p">[</span><span class="n">pos</span><span class="o">++</span><span class="p">]</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">pop</span><span class="p">(){</span>
+    <span class="n">pos</span><span class="o">--</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">top</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="n">dat</span><span class="p">[</span><span class="n">pos</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="push">push</h4>
+<ul>
+  <li>스택의 맨 위에 요소를 추가</li>
+  <li><code class="language-plaintext highlighter-rouge">s.push(10);</code></li>
+</ul>
+
+<h4 id="pop">pop</h4>
+<ul>
+  <li>스택의 맨 위 요소를 제거</li>
+  <li><code class="language-plaintext highlighter-rouge">s.pop();</code></li>
+</ul>
+
+<h4 id="top">top</h4>
+<ul>
+  <li>스택의 맨 위 요소에 접근 (읽기/수정 가능)</li>
+  <li><code class="language-plaintext highlighter-rouge">int x = s.top();</code></li>
+</ul>
+
+<h4 id="empty">empty</h4>
+<ul>
+  <li>스택이 비어 있는지 확인</li>
+  <li><code class="language-plaintext highlighter-rouge">if (s.empty()) { ... }</code></li>
+</ul>
+
+<h4 id="size">size</h4>
+<ul>
+  <li>스택에 들어 있는 요소 개수 반환</li>
+  <li><code class="language-plaintext highlighter-rouge">int n = s.size();</code></li>
+</ul>]]></content><author><name>Junha Hwang</name><email>junha320@gmail.com</email></author><category term="Learn" /><summary type="html"><![CDATA[스택 (Stack) 스택의 성질 원소의 추가 O(1) 원소의 제거 O(1) 제일 상단의 원소 확인이 O(1) 제일 상단이 아닌 원소의 확인/변경 불가능 기능과 구현 const int MX = 1000005; int dat[MX]; int pos = 0; void push(int x){ dat[pos++]=x; } void pop(){ pos--; } int top(){ return dat[pos-1]; } push 스택의 맨 위에 요소를 추가 s.push(10); pop 스택의 맨 위 요소를 제거 s.pop(); top 스택의 맨 위 요소에 접근 (읽기/수정 가능) int x = s.top(); empty 스택이 비어 있는지 확인 if (s.empty()) { ... } size 스택에 들어 있는 요소 개수 반환 int n = s.size();]]></summary></entry></feed>
