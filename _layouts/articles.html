@@ -6,7 +6,6 @@ layout: page
 
 {%- if _page_articles_data_source -%}
 {%- assign _keys = _page_articles_data_source | split: '.' -%}
-{%- endif -%}
 
 {%- assign _articles = nil -%}
 {%- for _key in _keys -%}
@@ -87,6 +86,8 @@ layout: page
 
 {%- else -%}
   <p>coming soon..</p>
+{%- endif -%}
+
 {%- endif -%}
 
 {{ content }}

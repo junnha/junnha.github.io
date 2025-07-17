@@ -1,9 +1,12 @@
 ---
-layout: articles
+layout: page
 title: PS
-articles:
-  data_source: site.tags.PS
-  show_info: true
-  show_excerpt: true
-  show_readmore: true
---- 
+---
+
+<ul>
+  {% for post in site.tags.PS %}
+    <li style="margin-bottom: 10px;">
+      <a href="{{ post.url | relative_url }}" style="font-size: 1.2rem; text-decoration: none;">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul> 

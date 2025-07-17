@@ -33,8 +33,13 @@ articles:
   show_readmore: true
   show_info: true
 ---
+{%- include snippets/assign.html
+  target=page.articles.data_source
+  source0=layout.articles.data_source -%}
+{%- assign _articles_data_source = __return -%}
+
 <div class="layout--home">
-  {%- include paginator.html -%}
+  {%- include paginator.html data_source=_articles_data_source -%}
 </div>
 <script>
   {%- include scripts/home.js -%}
