@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Algorithm Problem Solving Example - Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>기초적인 BFS - Blog</title>
 
-<meta name="description" content="This is an example post for the Problem Solving (PS) category.You can write your problem-solving notes and solutions here.">
+<meta name="description" content="BFS를 공부하기 위해 간단한 BFS를 풀어보았다.문제 정의도화지에 그림이 그려져 있을 때, 그림의 개수와 그 그림 중 가장 넓은 것의 넓이를 출력하는 문제입니다. 그림이란 1로 연결된 것을 의미하며, 가로나 세로로 연결된 1들은 하나의 그림으로 간주합니다. 그림의 넓이는 그림에 ...">
 <link rel="canonical" href="http://localhost:4000/2025/07/17/ps.html"><link rel="alternate" type="application/rss+xml" title="Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
@@ -279,11 +279,11 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Algorithm Problem Solving Example</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>기초적인 BFS</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
             href="https://github.com/junnha/junnha.github.io/tree/master/_posts/2025-07-17-ps.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Algorithm Problem Solving Example"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="기초적인 BFS"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=PS">PS</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 17, 2025</span>
@@ -291,9 +291,67 @@
     <meta itemprop="keywords" content="PS"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>This is an example post for the Problem Solving (PS) category.</p>
+<div class="article__content" itemprop="articleBody"><p>BFS를 공부하기 위해 간단한 BFS를 풀어보았다.</p>
 
-<p>You can write your problem-solving notes and solutions here.</p>
+<h3 id="문제-정의">문제 정의</h3>
+
+<p>도화지에 그림이 그려져 있을 때, 그림의 개수와 그 그림 중 가장 넓은 것의 넓이를 출력하는 문제입니다. 그림이란 1로 연결된 것을 의미하며, 가로나 세로로 연결된 1들은 하나의 그림으로 간주합니다. 그림의 넓이는 그림에 포함된 1의 개수입니다.</p>
+
+<p>```cpp
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define X first
+#define Y second // pair에서 first, second를 줄여서 쓰기 위해서 사용
+int board[502][502];
+bool vis[502][502]; // 해당 칸을 방문했는지 여부를 저장
+int dx[4] = {1,0,-1,0};
+int dy[4] = {0,1,0,-1}; // 상하좌우 네 방향을 의미</p>
+
+<p>int main(void){
+  	ios::sync_with_stdio(0);
+  	cin.tie(0);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int n,m;
+cin &gt;&gt; n &gt;&gt; m;
+
+for(int i=0;i&lt;n;i++) {
+	for(int j=0;j&lt;m;j++) {
+		cin &gt;&gt; board[i][j];
+	}
+}
+
+int num = 0;
+int mx = 0;
+
+for(int i=0;i&lt;n;i++) {
+	for(int j=0;j&lt;m;j++) {
+		if(board[i][j] == 0 || vis[i][j] == 1) continue;
+		num++;
+		queue&lt;pair&lt;int,int&gt; &gt; Q;
+		int area=0;
+
+		Q.push({i,j});
+		vis[i][j] = 1;
+
+    while(!Q.empty()){
+	area++;
+	pair&lt;int,int&gt; cur = Q.front();
+	Q.pop();
+		for(int dir = 0; dir &lt; 4; dir++){ // 상하좌우 칸을 살펴볼 것이다.
+  			int nx = cur.X + dx[dir];
+  			int ny = cur.Y + dy[dir]; // nx, ny에 dir에서 정한 방향의 인접한 칸의 좌표가 들어감
+  			
+			if(nx &lt; 0 || nx &gt;= n || ny &lt; 0 || ny &gt;= m) continue; // 범위 밖일 경우 넘어감
+  			if(vis[nx][ny] || board[nx][ny] != 1) continue; // 이미 방문한 칸이거나 파란 칸이 아닐 경우
+  			vis[nx][ny] = 1; // (nx, ny)를 방문했다고 명시
+  			Q.push({nx,ny});
+			}
+  			}
+		mx = max(mx, area);
+	}
+}
+cout &lt;&lt; num &lt;&lt; '\n' &lt;&lt; mx; }
+</code></pre></div></div>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2025-07-17T00:00:00+09:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
@@ -305,7 +363,7 @@
       </a>
     </p>
   </div></div></footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2025/07/17/0x05.html">Stack</a></div><div class="next"><span>NEXT</span><a href="/2025/07/17/%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%83%9D%EC%84%B1.html">블로그 시작</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2025/07/17/0x05.html">Stack</a></div><div class="next"><span>NEXT</span><a href="/2025/07/17/%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%83%9D%EC%84%B1.html">250717</a></div></div></div>
 
 </div>
 

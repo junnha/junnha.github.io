@@ -280,10 +280,20 @@
 
 <!-- end custom main top snippet -->
 <article itemscope itemtype="http://schema.org/WebPage"><div class="article__header"><header><h1>PS</h1></header></div><meta itemprop="headline" content="PS"><meta itemprop="author" content="Junha Hwang"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item"><div class="item__content">
-          <header><a href="/2025/07/17/ps.html"><h2 itemprop="headline" class="item__header">Algorithm Problem Solving Example</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">This is an example post for the Problem Solving (PS) category.
+          <header><a href="/2025/07/17/ps.html"><h2 itemprop="headline" class="item__header">기초적인 BFS</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">BFS를 공부하기 위해 간단한 BFS를 풀어보았다.
 
-You can write your problem-solving notes and solutions here.</div><p><a href="/2025/07/17/ps.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+문제 정의
+
+도화지에 그림이 그려져 있을 때, 그림의 개수와 그 그림 중 가장 넓은 것의 넓이를 출력하는 문제입니다. 그림이란 1로 연결된 것을 의미하며, 가로나 세로로 연결된 1들은 하나의 그림으로 간주합니다. 그림의 넓이는 그림에 포함된 1의 개수입니다.
+
+```cpp
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define X first
+#define Y second // pair에서 first, second를 줄여서 쓰기 위해서 사용
+int board[502][502];
+bool vis[502][502];...</div><p><a href="/2025/07/17/ps.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=PS">PS</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 17, 2025</span>
