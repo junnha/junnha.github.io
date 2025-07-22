@@ -1092,7 +1092,7 @@ a > .item__header.disabled, a > .item__header:disabled, a.item__header.disabled,
 
 .article__header--cover { width: 100%; }
 
-.article-header__title { margin-top: 0; margin-bottom: .2em; font-size: 1.3em; font-weight: 50; line-height: 1.4; color: #212529; }
+.article-header__title { margin-top: 0; margin-bottom: .2em; font-size: 1.3em; font-weight: 500; line-height: 1.4; color: #212529; }
 
 .article__content { line-height: 1.8; word-wrap: break-word; }
 @media print { .article__content { line-height: 1.6; } }
