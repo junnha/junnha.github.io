@@ -12,9 +12,9 @@ header:
       ko: &KO Data
     url: /data.html
   - titles:
-      en: &EN AI
-      ko: &KO AI
-    url: /ai.html
+      en: &EN Secure
+      ko: &KO Secure
+    url: /secure.html
   - titles:
       # @start locale config
       en      : &EN       Archive
