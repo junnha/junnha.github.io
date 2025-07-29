@@ -5,7 +5,7 @@
 
 <meta name="description" content="blog by Junha Hwang.
 ">
-<link rel="canonical" href="http://localhost:4000/"><link rel="alternate" type="application/rss+xml" title="Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<link rel="canonical" href="/"><link rel="alternate" type="application/rss+xml" title="Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -269,7 +269,7 @@
 </svg>
 <a title="blog by Junha Hwang.
 " href="/">Blog</a></div></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/ps.html">PS</a></li><li class="navigation__item"><a href="/blockchain.html">Blockchain</a></li><li class="navigation__item"><a href="/data.html">Data</a></li><li class="navigation__item"><a href="/ai.html">AI</a></li><li class="navigation__item"><a href="/archive.html">Archive</a></li><li class="navigation__item"><a href="/about.html">About</a></li></ul>
+        <ul><li class="navigation__item"><a href="/ps.html">PS</a></li><li class="navigation__item"><a href="/blockchain.html">Blockchain</a></li><li class="navigation__item"><a href="/data.html">Data</a></li><li class="navigation__item"><a href="/secure.html">Secure</a></li><li class="navigation__item"><a href="/archive.html">Archive</a></li><li class="navigation__item"><a href="/about.html">About</a></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
@@ -280,6 +280,24 @@
 
 <!-- end custom main top snippet -->
 <article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Junha Hwang"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/2025/07/22/BOJ4179.html"><h2 itemprop="headline" class="item__header">기초적인 BFS(2)</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody"><p>저번 글에 이어서 오늘도 BFS!</p>
+
+<p><a href="https://www.acmicpc.net/problem/4179" target="_blank">BOJ 4179</a>이다.<br />
+지난 글에서 풀었던 문제는 한 번의 탐색만 수행하면 되었지만, 오늘의 문제는 탐색을 두 번 수행한 후<br />
+각각의 값들을 비교해주어야 한다. 우선 기본형의 BFS를 가져왔고, 불이 붙는 구역의 거리를 구해준다.<br />
+그 후 지훈의 탈출 거리를 구해야 하는데, 우선 지훈이 초기 설정 배열의 범위를 벗어난다면 탈출에 성공!<br />
++1하여(그 전 거리이므로) 출력한다.<br />
+탈출하지 않았다면 <code class="language-plaintext highlighter-rouge">continue</code> 할 조건을 찾아 넘기고, 큐가 빌 때까지 탐색을 수행하면 된다.<br />
+이렇게 해도 <code class="language-plaintext highlighter-rouge">exit</code>이 되지 않았다면, 불가능하므로 IMPOSSIBLE 을 출력한다.</p>
+
+</div><p><a href="/2025/07/22/BOJ4179.html">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=PS">PS</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 22, 2025</span>
+            </li></ul></div><meta itemprop="author" content="Junha Hwang"/><meta itemprop="datePublished" content="2025-07-22T00:00:00+09:00">
+    <meta itemprop="keywords" content="PS"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/2025/07/17/%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%83%9D%EC%84%B1.html"><h2 itemprop="headline" class="item__header">250717</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody"><p>사실 이건 정말 간단하게 템플릿만 가져와서 몇 가지만 고치면 된다<br />
 뭔가 개발이나 IT 관련된 전공이나 분야에 있다면 블로그는 가지고 있어야 한다는 그런 편견..이 있기도 하고<br />
@@ -294,7 +312,7 @@
     <meta itemprop="keywords" content="일기"></div>
       </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/2025/07/17/BOJ1926.html"><h2 itemprop="headline" class="item__header">기초적인 BFS</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody"><p>BFS를 공부하기 위해 간단한 BFS(BOJ 1926)를 풀어보았다.</p>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody"><p>BFS를 공부하기 위해 간단한 BFS(<a href="https://www.acmicpc.net/problem/1926" target="_blank">BOJ 1926</a>)를 풀어보았다.</p>
 
 <h4 id="문제-정의">문제 정의</h4>
 
