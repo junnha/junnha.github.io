@@ -442,12 +442,32 @@ BFS를 수행하며 area를 세어 현재 그림의 넓이를 계산한다.<br /
       // 미리보기 요소 생성
       const previewElement = createPreviewElement(linkInfo, url);
       
-      // 링크 다음에 미리보기 삽입
-      linkElement.parentNode.insertBefore(previewElement, linkElement.nextSibling);
+      // 링크가 포함된 문단의 끝에 미리보기 삽입
+      const paragraph = findParentParagraph(linkElement);
+      if (paragraph) {
+        paragraph.appendChild(previewElement);
+      } else {
+        // 문단을 찾을 수 없으면 링크 다음에 삽입
+        linkElement.parentNode.insertBefore(previewElement, linkElement.nextSibling);
+      }
       
     } catch (error) {
       console.log('링크 미리보기 생성 실패:', url, error);
     }
+  }
+
+  function findParentParagraph(element) {
+    // 링크가 포함된 문단(p, div 등)을 찾기
+    let parent = element.parentElement;
+    while (parent && parent !== document.body) {
+      if (parent.tagName === 'P' || 
+          parent.tagName === 'DIV' || 
+          parent.classList.contains('article__content')) {
+        return parent;
+      }
+      parent = parent.parentElement;
+    }
+    return null;
   }
 
   async function fetchLinkInfo(url) {
