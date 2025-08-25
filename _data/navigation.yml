@@ -8,10 +8,6 @@ header:
       ko: &KO Blockchain
     url: /blockchain.html
   - titles:
-      en: &EN Data
-      ko: &KO Data
-    url: /data.html
-  - titles:
       en: &EN Secure
       ko: &KO Secure
     url: /secure.html
