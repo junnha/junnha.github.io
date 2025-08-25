@@ -16,6 +16,10 @@ header:
       ko: &KO Secure
     url: /secure.html
   - titles:
+      en: &EN Journel
+      ko: &KO Journel
+    url: /journel.html
+  - titles:
       # @start locale config
       en      : &EN       Archive
       en-GB   : *EN
