@@ -1,61 +1,39 @@
-(function() {
-  var SOURCES = window.TEXT_VARIABLES.sources;
-  window.Lazyload.js(SOURCES.jquery, function() {
-    $(function() {
-      var $this ,$scroll;
-      var $articleContent = $('.js-article-content');
-      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
-      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
-      $scroll = $(scroll);
+/**
+ * 링크 미리보기 자동 생성 스크립트
+ * 포스트 내의 링크를 감지하여 자동으로 미리보기를 생성합니다.
+ */
 
-      $articleContent.find('.highlight').each(function() {
-        $this = $(this);
-        $this.attr('data-lang', $this.find('code').attr('data-lang'));
-      });
-      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
-        $this = $(this);
-        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
-      });
-      $articleContent.on('click', '.anchor', function() {
-        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
-      });
-    });
-  });
-})();
+class LinkPreview {
+  constructor() {
+    this.init();
+  }
 
-// 링크 미리보기 자동 생성
-(function() {
-  // 페이지 로드 후 실행
-  document.addEventListener('DOMContentLoaded', function() {
-    initLinkPreview();
-  });
-
-  function initLinkPreview() {
+  init() {
     // 포스트 내용에서 링크 찾기
     const articleContent = document.querySelector('.article__content');
     if (!articleContent) return;
 
     // 링크 찾기 (http/https로 시작하는 링크)
     const links = articleContent.querySelectorAll('a[href^="http"]');
-    links.forEach(function(link) {
-      createPreview(link);
+    links.forEach(link => {
+      this.createPreview(link);
     });
   }
 
-  async function createPreview(linkElement) {
+  async createPreview(linkElement) {
     const url = linkElement.href;
     
     // 이미 미리보기가 있는지 확인
-    if (linkElement.nextElementSibling && linkElement.nextElementSibling.classList.contains('auto-link-preview')) {
+    if (linkElement.nextElementSibling?.classList.contains('auto-link-preview')) {
       return;
     }
 
     try {
       // 링크 정보 가져오기 (Open Graph 메타데이터)
-      const linkInfo = await fetchLinkInfo(url);
+      const linkInfo = await this.fetchLinkInfo(url);
       
       // 미리보기 요소 생성
-      const previewElement = createPreviewElement(linkInfo, url);
+      const previewElement = this.createPreviewElement(linkInfo, url);
       
       // 링크 다음에 미리보기 삽입
       linkElement.parentNode.insertBefore(previewElement, linkElement.nextSibling);
@@ -65,7 +43,7 @@
     }
   }
 
-  async function fetchLinkInfo(url) {
+  async fetchLinkInfo(url) {
     try {
       // Microlink API 사용 (무료)
       const response = await fetch(`https://api.microlink.io?url=${encodeURIComponent(url)}`);
@@ -75,8 +53,8 @@
         return {
           title: data.data.title || '제목 없음',
           description: data.data.description || '설명 없음',
-          image: data.data.image ? data.data.image.url : null,
-          logo: data.data.logo ? data.data.logo.url : null,
+          image: data.data.image?.url || null,
+          logo: data.data.logo?.url || null,
           siteName: data.data.publisher || new URL(url).hostname
         };
       }
@@ -94,7 +72,7 @@
     };
   }
 
-  function createPreviewElement(linkInfo, url) {
+  createPreviewElement(linkInfo, url) {
     const previewDiv = document.createElement('div');
     previewDiv.className = 'auto-link-preview';
     
@@ -103,11 +81,11 @@
     previewDiv.innerHTML = `
       <div class="auto-link-preview-content">
         <div class="auto-link-preview-text">
-          <h4 class="auto-link-preview-title">${escapeHtml(linkInfo.title)}</h4>
-          <p class="auto-link-preview-description">${escapeHtml(linkInfo.description)}</p>
+          <h4 class="auto-link-preview-title">${this.escapeHtml(linkInfo.title)}</h4>
+          <p class="auto-link-preview-description">${this.escapeHtml(linkInfo.description)}</p>
           <div class="auto-link-preview-meta">
-            <span class="auto-link-preview-site">${escapeHtml(linkInfo.siteName)}</span>
-            <span class="auto-link-preview-url">${escapeHtml(url)}</span>
+            <span class="auto-link-preview-site">${this.escapeHtml(linkInfo.siteName)}</span>
+            <span class="auto-link-preview-url">${this.escapeHtml(url)}</span>
           </div>
         </div>
         ${imageUrl ? `
@@ -120,16 +98,26 @@
     `;
 
     // 클릭 이벤트 추가
-    previewDiv.addEventListener('click', function() {
+    previewDiv.addEventListener('click', () => {
       window.open(url, '_blank', 'noopener,noreferrer');
     });
 
     return previewDiv;
   }
 
-  function escapeHtml(text) {
+  escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
   }
-})();
+}
+
+// 페이지 로드 후 실행
+document.addEventListener('DOMContentLoaded', () => {
+  new LinkPreview();
+});
+
+// 동적 콘텐츠 로드 후에도 실행 (SPA 등)
+if (typeof window !== 'undefined') {
+  window.LinkPreview = LinkPreview;
+} 
