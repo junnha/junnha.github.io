@@ -107,21 +107,19 @@ sharing:
 ## => Comments
 ##############################
 comments:
-  provider: gitalk # false (default), "disqus", "gitalk", "valine", "custom"
+  provider: utterances # false (default), "disqus", "utterances", "valine", "custom"
 
   ## Disqus
   disqus:
     shortname: # the Disqus shortname for the site
 
-  ## Gitalk
-  # please refer to https://github.com/gitalk/gitalk for more info.
-  gitalk:
-    clientID    : Ov23liIFjplhhgppfBHz # GitHub OAuth App Client ID
-    clientSecret: 55707741abba3144ffdf39b0424a5bf493e1f22d # GitHub OAuth App Client Secret
-    repository  : junnha.github.io # GitHub repo
-    owner       : junnha # GitHub repo owner
-    admin: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
-      - junnha # your GitHub Id
+  ## Utterances
+  # please refer to https://utteranc.es/ for more info.
+  utterances:
+    repository  : junnha/junnha.github.io # GitHub repo (format: owner/repo)
+    issue-term  : pathname # "pathname", "url", "title", "og:title"
+    theme       : github-light # "github-light", "github-dark", "preferred-color-scheme", "github-dark-orange", "icy-dark", "dark-blue", "photon-dark", "boxy-light", "boxy-dark"
+    label       : # Optional: label for issues (e.g., "comment")
 
   ## Valine
   # please refer to https://valine.js.org/en/ for more info.
