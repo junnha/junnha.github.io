@@ -115,11 +115,11 @@ comments:
 
   ## Gitalk
   # please refer to https://github.com/gitalk/gitalk for more info.
-  # NOTE: clientID and clientSecret are loaded from _config.local.yml
-  # This file should be in .gitignore to prevent committing secrets
+  # NOTE: For local development, _config.local.yml will override these values
+  # For GitHub Pages, these values below will be used
   gitalk:
-    clientID    : # Loaded from _config.local.yml (local development only)
-    clientSecret: # Loaded from _config.local.yml (local development only)
+    clientID    : Ov23liIFjplhhgppfBHz # GitHub OAuth App Client ID
+    clientSecret: 55707741abba3144ffdf39b0424a5bf493e1f22d # GitHub OAuth App Client Secret
     repository  : junnha.github.io # GitHub repo
     owner       : junnha # GitHub repo owner
     admin: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
