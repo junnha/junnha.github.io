@@ -289,7 +289,25 @@
 <h3 id="contact">Contact</h3>
 <p>Please feel free to reach out!<br />
 <code class="language-plaintext highlighter-rouge">junha320@gmail.com</code></p>
-</div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+</div><section class="page__comments d-print-none"><!-- fix text color in the input textarea of gitalk -->
+	<style type="text/css">
+		.gitalk-wrapper .gt-header-textarea {
+			color: #333 !important;
+		}
+	</style><div class="gitalk-wrapper" id="js-gitalk-container"></div><script>
+		window.Lazyload.css('https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css');
+		window.Lazyload.js('https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js', function() {
+			var gitalk = new Gitalk({
+				clientID: 'Ov23liIFjplhhgppfBHz',
+				clientSecret: '55707741abba3144ffdf39b0424a5bf493e1f22d',
+				repo: 'junnha.github.io',
+				owner: 'junnha',
+				admin: ['junnha'],
+				id: 'page-about'
+			});
+			gitalk.render('js-gitalk-container');
+		});
+	</script></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
 </div>
