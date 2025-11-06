@@ -115,8 +115,6 @@ comments:
 
   ## Gitalk
   # please refer to https://github.com/gitalk/gitalk for more info.
-  # NOTE: For local development, _config.local.yml will override these values
-  # For GitHub Pages, these values below will be used
   gitalk:
     clientID    : Ov23liIFjplhhgppfBHz # GitHub OAuth App Client ID
     clientSecret: 55707741abba3144ffdf39b0424a5bf493e1f22d # GitHub OAuth App Client Secret
