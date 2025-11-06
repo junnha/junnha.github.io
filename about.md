@@ -11,7 +11,7 @@ key: page-about
 
 
 ### Interests
-Artificial Intelligence, Blockchain, Data Preprocessing.  
+Machine Learning Compilation for Efficient AI Systems.  
 
 
 
